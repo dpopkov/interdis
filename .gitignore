@@ -3,6 +3,7 @@
 
 # Idea files
 /**/.idea/
+*.iml
 
 # Vim swp files
 *.swp
