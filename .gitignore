@@ -1,0 +1,8 @@
+# Java class files
+*.class
+
+# Idea files
+/**/.idea/
+
+# Vim swp files
+*.swp
