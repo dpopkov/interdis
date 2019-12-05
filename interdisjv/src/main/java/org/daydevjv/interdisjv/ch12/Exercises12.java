@@ -1,5 +1,7 @@
 package org.daydevjv.interdisjv.ch12;
 
+import java.util.Random;
+
 public class Exercises12 {
 
     @SuppressWarnings({"UnnecessaryLocalVariable", "UnusedAssignment"})
@@ -54,10 +56,37 @@ public class Exercises12 {
         System.out.println(r);
     }
 
+    // ex1_2_12 in py
+    private static void ex1_2_15() {
+        System.out.println();
+        System.out.println(canMakeTriangle(3, 4, 5));
+        System.out.println(canMakeTriangle(2, 4, 7));
+    }
+
+    private static boolean canMakeTriangle(int a, int b, int c) {
+        boolean oneIsBigger = a >= b + c || b >= a + c || c >= b + a;
+        return !oneIsBigger;
+    }
+
+    // ex1_2_16 in py
+    private static void ex1_2_19() {
+        System.out.println();
+        System.out.println(randomBetween(0, 10));
+        System.out.println(randomBetween(3, 4));
+        System.out.println(randomBetween(-1, 1));
+    }
+
+    private static int randomBetween(int from, int to) {
+        Random random = new Random();
+        return from + random.nextInt(to - from + 1);
+    }
+
     public static void main(String[] args) {
         ex1_2_1();
         ex1_2_2();
         ex1_2_3();
         ex1_2_14();
+        ex1_2_15();
+        ex1_2_19();
     }
 }

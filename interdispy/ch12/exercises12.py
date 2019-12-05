@@ -1,4 +1,5 @@
 import math
+import random
 
 
 # noinspection PyUnusedLocal
@@ -51,7 +52,29 @@ def evenly_divide(a, b):
     print(r)
 
 
+# ex1_2_15 in java
+def ex1_2_12():
+    print()
+    print(can_make_triangle(3, 4, 5))
+    print(can_make_triangle(2, 4, 7))
+
+
+def can_make_triangle(a, b, c):
+    bigger = a >= b + c or b >= a + c or c >= a + b
+    return not bigger
+
+
+# ex1_2_19 in java
+def ex1_2_16():
+    print()
+    print(random.randint(0, 10))
+    print(random.randint(3, 4))
+    print(random.randint(-1, 1))
+
+
 ex1_2_1()
 ex1_2_2()
 ex1_2_3()
 ex1_2_11()
+ex1_2_12()
+ex1_2_16()
