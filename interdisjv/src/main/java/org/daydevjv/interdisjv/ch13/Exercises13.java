@@ -3,14 +3,6 @@ package org.daydevjv.interdisjv.ch13;
 import java.util.Random;
 
 public class Exercises13 {
-    public static void main(String[] args) {
-        ex1_3_1();
-        ex1_3_5();
-        ex1_3_10();
-        ex1_3_13();
-        ex1_3_14();
-        ex1_3_16();
-    }
 
     private static void ex1_3_1() {
         System.out.println();
@@ -94,5 +86,43 @@ public class Exercises13 {
             power *= 2;
         }
         System.out.println();
+    }
+
+    // ex1_3_19 in py
+    private static void ex1_3_21() {
+        System.out.println();
+        printConvertedToBase(11, 2);
+        printConvertedToBase(255, 2);
+        printConvertedToBase(256, 2);
+        printConvertedToBase(255, 16);
+        printConvertedToBase(256, 16);
+        printConvertedToBase(257, 16);
+    }
+
+    private static void printConvertedToBase(long n, int base) {
+        final char[] digits = "0123456789ABCDEF".toCharArray();
+        int power = 1;
+        while (power <= n / base) {
+            power *= base;
+        }
+        while (power > 0) {
+            int digit = (int) (n / power);
+            System.out.print(digits[digit]);
+            if (digit > 0) {
+                n %= power;
+            }
+            power /= base;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        ex1_3_1();
+        ex1_3_5();
+        ex1_3_10();
+        ex1_3_13();
+        ex1_3_14();
+        ex1_3_16();
+        ex1_3_21();
     }
 }

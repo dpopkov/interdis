@@ -67,8 +67,34 @@ def ex1_3_13():
     print_powers_of2_less_than_or_equal(1024)
 
 
+def print_converted_to_base(n, base):
+    digits = '0123456789ABCDEF'
+    power = 1
+    while power <= (n // base):
+        power *= base
+    while power > 0:
+        digit = n // power
+        stdio.write(digits[digit])
+        if digit > 0:
+            n %= power
+        power //= base
+    stdio.writeln()
+
+
+# ex1_3_21 in java
+def ex1_3_19():
+    print()
+    print_converted_to_base(11, 2)
+    print_converted_to_base(255, 2)
+    print_converted_to_base(256, 2)
+    print_converted_to_base(255, 16)
+    print_converted_to_base(256, 16)
+    print_converted_to_base(257, 16)
+
+
 ex1_3_1()
 ex1_3_8()
 ex1_3_11()
 ex1_3_12()
 ex1_3_13()
+ex1_3_19()
