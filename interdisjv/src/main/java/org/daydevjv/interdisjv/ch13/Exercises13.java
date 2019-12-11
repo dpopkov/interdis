@@ -116,6 +116,74 @@ public class Exercises13 {
         System.out.println();
     }
 
+    // ex1_3_25 in py
+    private static void ex1_3_27() {
+        System.out.println();
+        printUniqueFactors(17);
+        printUniqueFactors(1156);
+    }
+
+    private static void printUniqueFactors(int n) {
+        int factor = 2;
+        while (factor <= n / factor) {
+            if (n % factor == 0) {
+                System.out.println(factor);
+                while (n % factor == 0) {
+                    n /= factor;
+                }
+            }
+            factor++;
+        }
+        if (n > 1) {
+            System.out.println(n);
+        }
+    }
+
+    // ex1_3_27 in py
+    private static void ex1_3_29() {
+        System.out.println();
+        print_checkerboard(3);
+        print_checkerboard(8);
+    }
+
+    private static void print_checkerboard(int size) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print((i + j) % 2 == 0 ? "* " : "  ");
+            }
+            System.out.println();
+        }
+    }
+
+    // ex1_3_28 in py
+    private static void ex1_3_30() {
+        System.out.println();
+        System.out.println(gcd(6, 15));
+        System.out.println(gcd(21, 56));
+    }
+
+    private static int greatestCommonDivisor(int a, int b) {
+        if (a == 0) {
+            return b;
+        } else if (b < a) {
+            return greatestCommonDivisor(b, a);
+        }
+        return greatestCommonDivisor(b % a, a);
+    }
+
+    private static int gcd(int a, int b) {
+        // todo: rewrite as iterative
+        if (a < b) {
+            if (b % a == 0) {
+                return a;
+            } else {
+                return gcd(b % a, a);
+            }
+        } else {
+            return gcd(b, a);
+        }
+    }
+
     public static void main(String[] args) {
         ex1_3_1();
         ex1_3_5();
@@ -124,5 +192,8 @@ public class Exercises13 {
         ex1_3_14();
         ex1_3_16();
         ex1_3_21();
+        ex1_3_27();
+        ex1_3_29();
+        ex1_3_30();
     }
 }
