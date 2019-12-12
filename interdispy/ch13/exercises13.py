@@ -167,12 +167,16 @@ def ex1_3_27():
 
 
 def greatest_common_divisor(a, b):
-    if a == 0:
-        return b
-    elif a > b:
-        return greatest_common_divisor(b, a)
-    else:
-        return greatest_common_divisor(b % a, a)
+    x = a
+    y = b
+    if a > b:
+        x = b
+        y = a
+    while y % x != 0:
+        tmp = x
+        x = y % x
+        y = tmp
+    return x
 
 
 # ex1_3_30 in java

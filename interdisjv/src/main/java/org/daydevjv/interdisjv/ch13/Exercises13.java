@@ -158,30 +158,32 @@ public class Exercises13 {
     // ex1_3_28 in py
     private static void ex1_3_30() {
         System.out.println();
-        System.out.println(gcd(6, 15));
-        System.out.println(gcd(21, 56));
+        System.out.println(greatestCommonDivisor(6, 15));
+        System.out.println(greatestCommonDivisor(21, 56));
     }
 
-    private static int greatestCommonDivisor(int a, int b) {
+    static int greatestCommonDivisorRecursive(int a, int b) {
         if (a == 0) {
             return b;
         } else if (b < a) {
-            return greatestCommonDivisor(b, a);
+            return greatestCommonDivisorRecursive(b, a);
         }
-        return greatestCommonDivisor(b % a, a);
+        return greatestCommonDivisorRecursive(b % a, a);
     }
 
-    private static int gcd(int a, int b) {
-        // todo: rewrite as iterative
-        if (a < b) {
-            if (b % a == 0) {
-                return a;
-            } else {
-                return gcd(b % a, a);
-            }
-        } else {
-            return gcd(b, a);
+    static int greatestCommonDivisor(int a, int b) {
+        int x = a;
+        int y = b;
+        if (a > b) {
+            x = b;
+            y = a;
         }
+        while (y % x != 0) {
+            int tmp = x;
+            x = y % x;
+            y = tmp;
+        }
+        return x;
     }
 
     public static void main(String[] args) {
