@@ -186,6 +186,91 @@ public class Exercises13 {
         return x;
     }
 
+    // ex1_3_29 in py
+    private static void ex1_3_31() {
+        System.out.println();
+        relativelyPrime(5);
+        relativelyPrime(20);
+    }
+
+    private static void relativelyPrime(int n) {
+        System.out.print("  ");
+        for (int i = 1; i <= n; i++) {
+            System.out.printf("%2d", i);
+        }
+        System.out.println();
+        for (int i = 1; i <= n; i++) {
+            System.out.printf("%2d", i);
+            for (int j = 1; j <= n; j++) {
+                char c = greatestCommonDivisor(i, j) == 1 ? '*' : ' ';
+                System.out.printf("%2c", c);
+            }
+            System.out.println();
+        }
+    }
+
+    private static void ex1_3_32() {
+        System.out.println();
+        printAllPositivePowers(31);
+        printAllPositivePowers(517);
+    }
+
+    private static void printAllPositivePowers(int k) {
+        long power = k;
+        long powerPrev = 1;
+        while (power > powerPrev) {
+            System.out.println(power);
+            powerPrev = power;
+            power *= k;
+        }
+    }
+
+    // ex1_3_30 in py
+    private static void ex1_3_34() {
+        System.out.println();
+        printSumOfTwoCubesInDifferentWays(1729);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private static void printSumOfTwoCubesInDifferentWays(int n) {
+        int m = (int) Math.ceil(Math.pow(n, 1.0 / 3.0));
+        for (int i = 1; i < m; i++) {
+            int i3 = i * i * i;
+            if (i3 < 0) {
+                break;
+            }
+            for (int j = i + 1; j < m; j++) {
+                int j3 = j * j * j;
+                if (j3 < 0) {
+                    break;
+                }
+                for (int k = 1; k < m; k++) {
+                    int k3 = k * k * k;
+                    if (k3 < 0) {
+                        break;
+                    }
+                    for (int l = k + 1; l < m; l++) {
+                        int l3 = l * l * l;
+                        if (l3 < 0) {
+                            break;
+                        }
+                        if (i == k || j == l || (i == l && k == j)) {
+                            continue;
+                        }
+                        int n1 = i3 + j3;
+                        int n2 = k3 + l3;
+                        if (n1 < 0 || n2 < 0 || n1 > n || n2 > n) {
+                            break;
+                        }
+                        if (n1 == n2) {
+                            System.out.printf("%d ^ 3 + %d ^ 3 == %d ^ 3 + %d ^ 3 == %d%n", i, j, k, l, n1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         ex1_3_1();
         ex1_3_5();
@@ -197,5 +282,8 @@ public class Exercises13 {
         ex1_3_27();
         ex1_3_29();
         ex1_3_30();
+        ex1_3_31();
+        ex1_3_32();
+        ex1_3_34();
     }
 }

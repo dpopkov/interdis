@@ -1,3 +1,4 @@
+import math
 import random
 import stdio
 import sys
@@ -186,6 +187,52 @@ def ex1_3_28():
     print(greatest_common_divisor(21, 56))
 
 
+def relatively_prime(n):
+    stdio.write('  ')
+    for i in range(n):
+        print('%2d' % (i + 1), end='')
+    print()
+    for i in range(n):
+        print('%2d' % (i + 1), end='')
+        for j in range(n):
+            c = ' *' if greatest_common_divisor(i + 1, j + 1) == 1 else '  '
+            print(c, end='')
+        print()
+
+
+# ex1_3_31 in java
+def ex1_3_29():
+    print()
+    relatively_prime(5)
+    relatively_prime(20)
+
+
+def print_sum_of_two_cubes_in_different_ways(n):
+    m = math.ceil(math.pow(n, 1.0 / 3.0))
+    for i in range(1, m):
+        i3 = i * i * i
+        for j in range(i + 1, m):
+            j3 = j * j * j
+            for k in range(1, m):
+                k3 = k * k * k
+                for l in range(k + 1, m):
+                    l3 = l * l * l
+                    if i == k or j == l or (i == l and k == j):
+                        continue
+                    n1 = i3 + j3
+                    n2 = k3 + l3
+                    if n1 > n or n2 > n:
+                        break
+                    if n1 == n2:
+                        print("%d ^ 3 + %d ^ 3 == %d ^ 3 + %d ^ 3 == %d" % (i, j, k, l, n1))
+
+
+# ex1_3_34 in java
+def ex1_3_30():
+    print()
+    print_sum_of_two_cubes_in_different_ways(1729)
+
+    
 ex1_3_1()
 ex1_3_8()
 ex1_3_11()
@@ -196,3 +243,5 @@ ex1_3_25()
 ex1_3_26()
 ex1_3_27()
 ex1_3_28()
+ex1_3_29()
+ex1_3_30()
