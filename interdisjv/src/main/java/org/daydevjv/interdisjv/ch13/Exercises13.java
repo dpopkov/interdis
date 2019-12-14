@@ -271,6 +271,78 @@ public class Exercises13 {
         }
     }
 
+    // ex1_3_33 in py
+    private static void ex1_3_35() {
+        System.out.println();
+        System.out.println(addChecksumDigit("020131452"));
+        System.out.println(addChecksumDigit("226611156"));
+    }
+
+    private static String addChecksumDigit(String uncheckedIsbn) {
+        int checksum = calculateChecksum(uncheckedIsbn);
+        int checkDigit = 11 - checksum % 11;
+        checkDigit = checkDigit == 11 ? 0 : checkDigit;
+        return uncheckedIsbn + (checkDigit == 10 ? 'X' : checkDigit);
+    }
+
+    private static int calculateChecksum(String s) {
+        int sum = 0;
+        int last = s.length() - 1;
+        int multiplier = (last == 8) ? 2 : 1;
+        for (int i = last; i >= 0; i--) {
+            char ch = s.charAt(i);
+            int digit = (ch == 'X') ? 10 : (ch - '0');
+            sum += multiplier * digit;
+            multiplier++;
+        }
+        return sum;
+    }
+
+    // ex1_3_34 in py
+    private static void ex1_3_36() {
+        System.out.println();
+        System.out.println(countPrimes(5));
+        System.out.println(countPrimes(30));
+    }
+
+    static int countPrimes(int n) {
+        int count = 0;
+        for (int i = 2; i <= n; i++) {
+            if (isPrime(i)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static int countPrimesInSieve(int n) {
+        boolean[] sieve = new boolean[n + 1];
+        int i2;
+        for (int i = 2; (i2 = i * i) < sieve.length; i++) {
+            if (!sieve[i]) {
+                for (int j = i2; j < sieve.length; j += i) {
+                    sieve[j] = true;
+                }
+            }
+        }
+        int count = 0;
+        for (int i = 2; i < sieve.length; i++) {
+            if (!sieve[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    static boolean isPrime(int n) {
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         ex1_3_1();
         ex1_3_5();
@@ -285,5 +357,7 @@ public class Exercises13 {
         ex1_3_31();
         ex1_3_32();
         ex1_3_34();
+        ex1_3_35();
+        ex1_3_36();
     }
 }
