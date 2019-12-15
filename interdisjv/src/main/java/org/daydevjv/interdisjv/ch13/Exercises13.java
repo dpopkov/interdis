@@ -343,6 +343,42 @@ public class Exercises13 {
         return true;
     }
 
+    private static void ex1_3_41() {
+        System.out.println();
+        Random random = new Random();
+        int countIn6 = 0;
+        int countIn12 = 0;
+        for (int t = 0; t < 1000; t++) {
+            boolean atLeastOne = false;
+            for (int i = 0; i < 6; i++) {
+                int roll = random.nextInt(6) + 1;
+                if (roll == 1) {
+                    atLeastOne = true;
+                }
+            }
+            if (atLeastOne) {
+                countIn6++;
+            }
+            atLeastOne = false;
+            boolean atLeastTwice = false;
+            for (int i = 0; i < 12; i++) {
+                int roll = random.nextInt(6) + 1;
+                if (roll == 1) {
+                    if (atLeastOne) {
+                        atLeastTwice = true;
+                    } else {
+                        atLeastOne = true;
+                    }
+                }
+            }
+            if (atLeastTwice) {
+                countIn12++;
+            }
+        }
+        System.out.println("count in 6 = " + countIn6);
+        System.out.println("count in 12 = " + countIn12);
+    }
+
     public static void main(String[] args) {
         ex1_3_1();
         ex1_3_5();
@@ -359,5 +395,6 @@ public class Exercises13 {
         ex1_3_34();
         ex1_3_35();
         ex1_3_36();
+        ex1_3_41();
     }
 }

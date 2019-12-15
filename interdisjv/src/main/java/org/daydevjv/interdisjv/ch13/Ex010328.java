@@ -9,7 +9,7 @@ Run quick experiments to determine the impact of using the termination condition
 For each method find the largest n such than when you type in an n-digit number,
 the program is sure to finish within 10 seconds.
  */
-public class Exercise010328 {
+public class Ex010328 {
     public static void main(String[] args) {
         long n = Long.parseLong(args[0]);
         int rep = 4;
@@ -19,8 +19,8 @@ public class Exercise010328 {
         long total1 = 0;
         long total2 = 0;
         for (int i = 0; i < rep; i++) {
-            total1 += runMethod(Exercise010328::factors, n);
-            total2 += runMethod(Exercise010328::factorsLonger, n);
+            total1 += runMethod(Ex010328::factors, n);
+            total2 += runMethod(Ex010328::factorsLonger, n);
         }
         System.out.println("1: average elapsed " + (total1 / rep) + " ms");
         System.out.println("2: average elapsed " + (total2 / rep) + " ms");
